@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-notificationhub",
+  "version": "1.0.0",
+  "description": "An example module to illustrate the usage of Notification Hubs",
+  "author": "Matteo Pagani <matteo.pagani@microsoft.co,>",
+  "scripts": {
+    "test": "vows --spec --isolate",
+    "start": "node app.js",
+    "predeploy": "echo im about to deploy",
+    "postdeploy": "echo ive deployed",
+    "prepublish": "coffee --bare --compile --output lib/foo src/foo/*.coffee"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "httpdispatcher": "~1.0.0",
+    "azure": "~0.10.6"
+  },
+  "license": "MIT"
+}
+  
