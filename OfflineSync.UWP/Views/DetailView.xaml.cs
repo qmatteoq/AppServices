@@ -27,15 +27,15 @@ namespace OfflineSync.UWP.Views
         private async void OnSaveClicked(object sender, RoutedEventArgs e)
         {
             item.Text = Notes.Text;
-            await (Application.Current as UWP.App).MobileServiceHelper.UpdateItemAsync(item);
-            await (Application.Current as UWP.App).MobileServiceHelper.SyncAsync();
+            await (Application.Current as App).MobileServiceHelper.UpdateItemAsync(item);
+            await (Application.Current as App).MobileServiceHelper.SyncAsync();
             Frame.GoBack();
         }
 
         private async void OnDeleteClicked(object sender, RoutedEventArgs e)
         {
-            await (Application.Current as UWP.App).MobileServiceHelper.DeleteItemAsync(item);
-            await (Application.Current as UWP.App).MobileServiceHelper.SyncAsync();
+            await (Application.Current as App).MobileServiceHelper.DeleteItemAsync(item);
+            await (Application.Current as App).MobileServiceHelper.SyncAsync();
             Frame.GoBack();
         }
     }
