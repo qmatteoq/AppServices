@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.UWP", "OfflineSync.UWP\OfflineSync.UWP.csproj", "{DD0A9563-93B9-4A34-9518-52790C1E8A73}"
 EndProject
@@ -18,8 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification Hub", "Notification Hub", "{37F72398-41C5-45F1-A556-60059E902723}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationHubSample.Client", "NotificationHub\NotificationHubSample.Client\NotificationHubSample.Client.csproj", "{C4D9B977-23FD-458E-9A8E-29B1CB468446}"
-EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NodeJsNotificationHub", "NotificationHub\NodeJs\NodeJsNotificationHub.njsproj", "{34D937BB-BF7C-499F-BE46-D26D52B4AA07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsApi", "NewsApi\NewsApi.csproj", "{AA302BB5-93CF-48F7-88C2-579DF697CBE9}"
 EndProject

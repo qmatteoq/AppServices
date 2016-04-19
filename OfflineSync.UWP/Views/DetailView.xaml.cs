@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using OfflineSync.PCL.Model;
+using OfflineSync.UWP.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,15 +27,11 @@ namespace OfflineSync.UWP.Views
         private async void OnSaveClicked(object sender, RoutedEventArgs e)
         {
             item.Text = Notes.Text;
-            await (Application.Current as App).MobileServiceHelper.UpdateItemAsync(item);
-            await (Application.Current as App).MobileServiceHelper.SyncAsync();
             Frame.GoBack();
         }
 
         private async void OnDeleteClicked(object sender, RoutedEventArgs e)
         {
-            await (Application.Current as App).MobileServiceHelper.DeleteItemAsync(item);
-            await (Application.Current as App).MobileServiceHelper.SyncAsync();
             Frame.GoBack();
         }
     }

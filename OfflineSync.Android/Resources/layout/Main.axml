@@ -3,8 +3,37 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+    <Button
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="Login"
+        android:id="@+id/LoginButton" />
+    <Button
+        android:text="Get data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="RefreshItems"
+        android:id="@+id/GetData" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/todoText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Add an item" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="AddItem"
+            android:text="Add" />
+    </LinearLayout>
     <ListView
         android:id="@+id/Items"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent" />
 </LinearLayout>

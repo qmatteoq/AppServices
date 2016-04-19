@@ -1,9 +1,9 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
+﻿using System;
+using Microsoft.WindowsAzure.MobileServices;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
-using Microsoft.WindowsAzure.MobileServices.Sync;
 using OfflineSync.PCL.Model;
 
 namespace OfflineSync.PCL
@@ -12,35 +12,37 @@ namespace OfflineSync.PCL
     {
         public MobileServiceClient Client { get; set; }
 
-        public MobileServiceHelper()
+        public string Path { get; }
+
+        public MobileServiceHelper(string path)
         {
             Client = new MobileServiceClient(
-                "https://todosamplednl.azurewebsites.net");
+                "https://test-azureappservice.azurewebsites.net");
+            this.Path = path;
         }
 
         public async Task SyncAsync()
         {
-            var table = Client.GetSyncTable<TodoItem>();
+            var table = Client.GetSyncTable<ToDoItem>();
             try
             {
                 await Client.SyncContext.PushAsync();
                 await
-                    table.PullAsync("todoItems" + Client.CurrentUser.UserId,
-                        table.Where(x => x.UserId == Client.CurrentUser.UserId));
+                    table.PullAsync("allTodoItems", table.CreateQuery());
             }
-            catch (MobileServicePushFailedException ex)
+            catch (Exception ex)
             {
-                Debug.WriteLine(ex.PushResult.Status);
+                Debug.WriteLine(ex.Message);
             }
         }
 
-        public  async Task InitializeDatabaseAsync()
+        public async Task InitializeDatabaseAsync()
         {
             if (!Client.SyncContext.IsInitialized)
             {
-                var store = new MobileServiceSQLiteStore("todos.db");
-                store.DefineTable<TodoItem>();
-                await Client.SyncContext.InitializeAsync(store, new SyncHandling());
+                var store = new MobileServiceSQLiteStore(Path);
+                store.DefineTable<ToDoItem>();
+                await Client.SyncContext.InitializeAsync(store);
             }
         }
 
@@ -50,30 +52,29 @@ namespace OfflineSync.PCL
             Client.CurrentUser = user;
         }
 
-        public async Task<IEnumerable<TodoItem>> GetItemsAsync()
+        public async Task<IEnumerable<ToDoItem>> GetItemsAsync()
         {
-            var table = Client.GetSyncTable<TodoItem>();
-            var items = await table.Where(x => x.UserId == Client.CurrentUser.UserId).ToEnumerableAsync();
+            var table = Client.GetSyncTable<ToDoItem>();
+            var items = await table.ToEnumerableAsync();
             return items;
         }
 
-        public async Task AddItemAsync(TodoItem item)
+        public async Task AddItemAsync(ToDoItem item)
         {
-            var table = Client.GetSyncTable<TodoItem>();
+            var table = Client.GetSyncTable<ToDoItem>();
             await table.InsertAsync(item);
         }
 
-        public async Task UpdateItemAsync(TodoItem item)
+        public async Task UpdateItemAsync(ToDoItem item)
         {
-            var table = Client.GetSyncTable<TodoItem>();
+            var table = Client.GetSyncTable<ToDoItem>();
             await table.UpdateAsync(item);
         }
 
-        public async Task DeleteItemAsync(TodoItem item)
+        public async Task DeleteItemAsync(ToDoItem item)
         {
-            var table = Client.GetSyncTable<TodoItem>();
+            var table = Client.GetSyncTable<ToDoItem>();
             await table.DeleteAsync(item);
         }
-
     }
 }

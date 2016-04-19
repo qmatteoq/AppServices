@@ -1,13 +1,14 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
-using Windows.Security.Credentials;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.WindowsAzure.MobileServices;
-using OfflineSync.PCL;
-using OfflineSync.PCL.Model;
+using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
+using OfflineSync.UWP.Model;
 
 namespace OfflineSync.UWP.Views
 {
@@ -15,54 +16,26 @@ namespace OfflineSync.UWP.Views
     {
         private ObservableCollection<TodoItem> todoItems { get; set; }
 
+        MobileServiceClient client = new MobileServiceClient("https://appservice-sample.azurewebsites.net");
+
         private string userId;
 
         public MainPage()
         {
-            this.InitializeComponent();
-            (Application.Current as UWP.App).MobileServiceHelper = new MobileServiceHelper();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            PasswordVault vault = new PasswordVault();
-            bool isUserLogged = false;
-            try
-            {
-                var resources = vault.FindAllByResource("UserId");
-                isUserLogged = true;
-            }
-            catch
-            {
-                isUserLogged = false;
-            }
-
-            if (!isUserLogged)
-            {
-                await LoginAsync();
-            }
-            else
-            {
-                var resources = vault.FindAllByResource("UserId");
-                PasswordCredential user = resources.FirstOrDefault();
-                user.RetrievePassword();
-                (Application.Current as UWP.App).MobileServiceHelper.SetLoggedUser(user.Password);
-                userId = user.Password;
-            }
-
-            await (Application.Current as UWP.App).MobileServiceHelper.InitializeDatabaseAsync();
+            await LoginAsync();
+            await InitializeDatabaseAsync();
             await Refresh();
         }
 
         private async Task LoginAsync()
         {
-            MobileServiceUser user = await (Application.Current as UWP.App).MobileServiceHelper.Client.LoginAsync(MobileServiceAuthenticationProvider.Twitter);
-            (Application.Current as UWP.App).MobileServiceHelper.SetLoggedUser(user.UserId);
-            PasswordVault vault = new PasswordVault();
-            PasswordCredential credential = new PasswordCredential("UserId", "id", user.UserId);
-            vault.Add(credential);
-            userId = user.UserId;
+            MobileServiceUser user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
         }
 
         private async void OnAddClicked(object sender, RoutedEventArgs e)
@@ -74,8 +47,8 @@ namespace OfflineSync.UWP.Views
                 UserId = userId
             };
 
-            await (Application.Current as UWP.App).MobileServiceHelper.AddItemAsync(item);
-            await (Application.Current as UWP.App).MobileServiceHelper.SyncAsync();
+            await AddItemAsync(item);
+            await SyncAsync();
             todoItems.Add(item);
         }
 
@@ -92,11 +65,61 @@ namespace OfflineSync.UWP.Views
 
         public async Task Refresh()
         {
-            await (Application.Current as UWP.App).MobileServiceHelper.SyncAsync();
+            await SyncAsync();
 
-            var items = await (Application.Current as UWP.App).MobileServiceHelper.GetItemsAsync();
+            var items = await GetItemsAsync();
             todoItems = new ObservableCollection<TodoItem>(items);
             Items.ItemsSource = todoItems;
+        }
+
+        public async Task SyncAsync()
+        {
+            var table = client.GetSyncTable<TodoItem>();
+            try
+            {
+                await client.SyncContext.PushAsync();
+                await
+                    table.PullAsync("allTodoItems", table.CreateQuery());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        public async Task InitializeDatabaseAsync()
+        {
+            if (!client.SyncContext.IsInitialized)
+            {
+                var store = new MobileServiceSQLiteStore("todo.db");
+                store.DefineTable<TodoItem>();
+                await client.SyncContext.InitializeAsync(store);
+            }
+        }
+
+        public async Task AddItemAsync(TodoItem item)
+        {
+            var table = client.GetSyncTable<TodoItem>();
+            await table.InsertAsync(item);
+        }
+
+        public async Task UpdateItemAsync(TodoItem item)
+        {
+            var table = client.GetSyncTable<TodoItem>();
+            await table.UpdateAsync(item);
+        }
+
+        public async Task DeleteItemAsync(TodoItem item)
+        {
+            var table = client.GetSyncTable<TodoItem>();
+            await table.DeleteAsync(item);
+        }
+
+        public async Task<IEnumerable<TodoItem>> GetItemsAsync()
+        {
+            var table = client.GetSyncTable<TodoItem>();
+            var items = await table.ToEnumerableAsync();
+            return items;
         }
     }
 }

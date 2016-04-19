@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Azure.Mobile.Client": "2.0.1",
+    "Microsoft.Azure.Mobile.Client.SQLiteStore": "2.0.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Newtonsoft.Json": "8.0.3",
-    "WindowsAzure.MobileServices": "2.0.0-beta-3",
-    "WindowsAzure.MobileServices.SQLiteStore": "2.0.0-beta-2"
+    "Newtonsoft.Json": "8.0.3"
   },
   "frameworks": {
     "uap10.0": {}

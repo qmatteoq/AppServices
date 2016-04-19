@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-
-namespace OfflineSync.PCL.Model
+﻿namespace OfflineSync.UWP.Model
 {
-    public class ToDoItem
+    public class TodoItem
     {
         public string Id { get; set; }
 
