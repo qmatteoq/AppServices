@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.UWP", "OfflineSync.UWP\OfflineSync.UWP.csproj", "{DD0A9563-93B9-4A34-9518-52790C1E8A73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.UWP", "Mobile Apps\OfflineSync.UWP\OfflineSync.UWP.csproj", "{DD0A9563-93B9-4A34-9518-52790C1E8A73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.Droid", "OfflineSync.Android\OfflineSync.Droid.csproj", "{8F2C8267-898E-4622-BDD1-B3108C3AF098}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.Droid", "Mobile Apps\OfflineSync.Android\OfflineSync.Droid.csproj", "{8F2C8267-898E-4622-BDD1-B3108C3AF098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApiClient", "SampleApiClient\SampleApiClient.csproj", "{ABC65E9C-EFFF-4A7F-A406-5E5FC49F7848}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApiClient", "API Apps\SampleApiClient\SampleApiClient.csproj", "{ABC65E9C-EFFF-4A7F-A406-5E5FC49F7848}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile Services", "Mobile Services", "{A69F6B70-31E0-42FA-AC57-858F85DA404F}"
 EndProject
@@ -17,9 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification Hub", "Notific
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationHubSample.Client", "NotificationHub\NotificationHubSample.Client\NotificationHubSample.Client.csproj", "{C4D9B977-23FD-458E-9A8E-29B1CB468446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsApi", "NewsApi\NewsApi.csproj", "{AA302BB5-93CF-48F7-88C2-579DF697CBE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsApi", "API Apps\NewsApi\NewsApi.csproj", "{AA302BB5-93CF-48F7-88C2-579DF697CBE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationHubSample.Server", "NotificationHub\NotificationHubSample.Server\NotificationHubSample.Server.csproj", "{A3B37169-E12A-4E16-BC2B-D1C69CB76059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationHubSample.Droid", "NotificationHub\NotificationHubSample.Droid\NotificationHubSample.Droid.csproj", "{0BA22396-108B-4E25-9713-1A285F4D8515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfflineSync.Backend", "Mobile Apps\Test_AzureAppServiceService\OfflineSync.Backend.csproj", "{209FA716-A7AD-4095-BD70-C8710FC66FA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,6 +153,46 @@ Global
 		{A3B37169-E12A-4E16-BC2B-D1C69CB76059}.Release|x64.Build.0 = Release|Any CPU
 		{A3B37169-E12A-4E16-BC2B-D1C69CB76059}.Release|x86.ActiveCfg = Release|Any CPU
 		{A3B37169-E12A-4E16-BC2B-D1C69CB76059}.Release|x86.Build.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|ARM.Deploy.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x64.Build.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|ARM.Build.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|ARM.Deploy.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x64.ActiveCfg = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x64.Build.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x64.Deploy.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x86.Build.0 = Release|Any CPU
+		{0BA22396-108B-4E25-9713-1A285F4D8515}.Release|x86.Deploy.0 = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|ARM.Build.0 = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x64.Build.0 = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x86.Build.0 = Debug|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|ARM.ActiveCfg = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|ARM.Build.0 = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x64.ActiveCfg = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x64.Build.0 = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x86.ActiveCfg = Release|Any CPU
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,5 +204,7 @@ Global
 		{C4D9B977-23FD-458E-9A8E-29B1CB468446} = {37F72398-41C5-45F1-A556-60059E902723}
 		{AA302BB5-93CF-48F7-88C2-579DF697CBE9} = {FFDA3919-8321-416A-B2BC-44FC165C70AA}
 		{A3B37169-E12A-4E16-BC2B-D1C69CB76059} = {37F72398-41C5-45F1-A556-60059E902723}
+		{0BA22396-108B-4E25-9713-1A285F4D8515} = {37F72398-41C5-45F1-A556-60059E902723}
+		{209FA716-A7AD-4095-BD70-C8710FC66FA7} = {A69F6B70-31E0-42FA-AC57-858F85DA404F}
 	EndGlobalSection
 EndGlobal
