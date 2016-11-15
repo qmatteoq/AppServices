@@ -3,12 +3,11 @@ using Android.Gms.Common;
 using Android.Widget;
 using Android.OS;
 using Android.Util;
-using Gcm;
-
+using Gcm.Client;
 
 namespace NotificationHubSample.Droid
 {
-    [Activity(Label = "NotificationHubSample.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "NotificationHubSample Android", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private TextView message;

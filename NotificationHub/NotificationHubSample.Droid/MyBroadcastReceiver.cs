@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content;
+using Gcm.Client;
 
 [assembly: Permission(Name = "com.xamarin.notificationsample.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "com.xamarin.notificationsample.permission.C2D_MESSAGE")]
@@ -18,7 +19,7 @@ namespace NotificationHubSample.Droid
        Categories = new string[] { "com.xamarin.notificationsample" })]
     [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY },
        Categories = new string[] { "com.xamarin.notificationsample" })]
-    public class MyBroadcastReceiver : Gcm.GcmBroadcastReceiverBase<PushHandlerService>
+    public class MyBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
         public static string[] SENDER_IDS = new string[] { Constants.SenderID };
 

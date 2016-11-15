@@ -5,7 +5,7 @@ using WindowsAzure.Messaging;
 using Android.App;
 using Android.Content;
 using Android.Util;
-using Gcm;
+using Gcm.Client;
 
 namespace NotificationHubSample.Droid
 {
