@@ -11,8 +11,8 @@
     <AssemblyName>SampleApiClient</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -98,14 +98,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsApiCodemotion2016\INews.cs" />
-    <Compile Include="NewsApiCodemotion2016\INewsApiCodemotion2016.cs" />
-    <Compile Include="NewsApiCodemotion2016\Models\FeedItem.cs" />
-    <Compile Include="NewsApiCodemotion2016\Models\FeedItemCollection.cs" />
-    <Compile Include="NewsApiCodemotion2016\News.cs" />
-    <Compile Include="NewsApiCodemotion2016\NewsApiCodemotion2016.cs" />
-    <Compile Include="NewsApiCodemotion2016\NewsApiCodemotion2016Extensions.cs" />
-    <Compile Include="NewsApiCodemotion2016\NewsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +125,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewsAPI.ClientAPI\NewsAPI.ClientAPI.csproj">
+      <Project>{0bedcc89-ed5b-4629-904f-6a9513e6c870}</Project>
+      <Name>NewsAPI.ClientAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

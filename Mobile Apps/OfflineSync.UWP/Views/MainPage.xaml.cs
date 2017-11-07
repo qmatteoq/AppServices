@@ -35,7 +35,7 @@ namespace OfflineSync.UWP.Views
 
         private async Task LoginAsync()
         {
-            MobileServiceUser user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+            MobileServiceUser user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, true);
         }
 
         private async void OnAddClicked(object sender, RoutedEventArgs e)

@@ -23,7 +23,6 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-                <AppBarButton Label="Login" Icon="Account" Click="OnLogin" />
                 <AppBarButton Label="Refresh" Icon="Refresh" Click="OnRefresh" />
             </CommandBar.PrimaryCommands>
         </CommandBar>
